@@ -7,4 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.trianacodes.script.utah.fragments.ListaSocioFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_lista_socio" />
 </android.support.constraint.ConstraintLayout>

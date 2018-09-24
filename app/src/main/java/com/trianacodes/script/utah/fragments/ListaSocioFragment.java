@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,12 +77,19 @@ public class ListaSocioFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_lista_socio, container, false);
+        Log.i("Listasocio","ArrayList");
         listaSocios = new ArrayList<Socios>();
+        Log.i("Listasocio","Recycler");
         recyclerSocios=vista.findViewById(R.id.recyclerId);
+        Log.i("Listasocio","setLayout");
         recyclerSocios.setLayoutManager(new LinearLayoutManager(getContext()));
+        Log.i("Listasocio","llenarLista");
         llenarListaSocios();
+        Log.i("Listasocio","Adapter");
         AdaptadorSocios adapter = new AdaptadorSocios(listaSocios);
+        Log.i("Listasocio","setAdapter");
         recyclerSocios.setAdapter(adapter);
+        Log.i("Listasocio","Adapter Listener");
         adapter.setOnCliCkListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +103,7 @@ public class ListaSocioFragment extends Fragment {
 
     private void llenarListaSocios() {
 
+        Log.i("Listasocio","llenado Lista socios");
         listaSocios.add(new Socios("Rafa","Mekaniks","Presidente", R.drawable.mekaniks));
         listaSocios.add(new Socios("Carlos","Ghost","Vicepresidente", R.drawable.ghost));
         listaSocios.add(new Socios("Angel","Angelito","", R.drawable.angel));

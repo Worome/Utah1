@@ -16,7 +16,7 @@ public class AdaptadorSocios extends
         RecyclerView.Adapter<AdaptadorSocios.SociosViewHolder>
         implements View.OnClickListener{
 
-    ArrayList<Socios> listaSocios;
+        ArrayList<Socios> listaSocios;
     private View.OnClickListener listener;
 
     public AdaptadorSocios(ArrayList<Socios> listaSocios) {

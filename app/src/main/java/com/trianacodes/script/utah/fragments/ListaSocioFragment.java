@@ -4,11 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.trianacodes.script.utah.Entidades.Socios;
 import com.trianacodes.script.utah.R;
+import com.trianacodes.script.utah.adaptadores.AdaptadorSocios;
+
+import java.util.ArrayList;
 
 
 /**
@@ -30,6 +37,8 @@ public class ListaSocioFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    ArrayList<Socios> listaSocios;
+    RecyclerView recyclerSocios;
 
     public ListaSocioFragment() {
         // Required empty public constructor
@@ -66,7 +75,31 @@ public class ListaSocioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista_socio, container, false);
+        View vista = inflater.inflate(R.layout.fragment_lista_socio, container, false);
+        listaSocios = new ArrayList<Socios>();
+        recyclerSocios=vista.findViewById(R.id.recyclerId);
+        recyclerSocios.setLayoutManager(new LinearLayoutManager(getContext()));
+        llenarListaSocios();
+        AdaptadorSocios adapter = new AdaptadorSocios(listaSocios);
+        recyclerSocios.setAdapter(adapter);
+        adapter.setOnCliCkListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"Seleccionado: " + listaSocios.get(
+                        recyclerSocios.getChildAdapterPosition(view)).getNombre(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+        return vista;
+    }
+
+    private void llenarListaSocios() {
+
+        listaSocios.add(new Socios("Rafa","Mekaniks","Presidente", R.drawable.mekaniks));
+        listaSocios.add(new Socios("Carlos","Ghost","Vicepresidente", R.drawable.ghost));
+        listaSocios.add(new Socios("Angel","Angelito","", R.drawable.angel));
+        listaSocios.add(new Socios("Javier","Worome","Secretario", R.drawable.worome));
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

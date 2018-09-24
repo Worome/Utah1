@@ -12,9 +12,12 @@ import com.trianacodes.script.utah.R;
 
 import java.util.ArrayList;
 
-public class AdaptadorSocios extends RecyclerView.Adapter<AdaptadorSocios.SociosViewHolder> {
+public class AdaptadorSocios extends
+        RecyclerView.Adapter<AdaptadorSocios.SociosViewHolder>
+        implements View.OnClickListener{
 
     ArrayList<Socios> listaSocios;
+    private View.OnClickListener listener;
 
     public AdaptadorSocios(ArrayList<Socios> listaSocios) {
         this.listaSocios = listaSocios;
@@ -24,18 +27,36 @@ public class AdaptadorSocios extends RecyclerView.Adapter<AdaptadorSocios.Socios
     public SociosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, null, false);
-
+        view.setOnClickListener(this);
         return new SociosViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(SociosViewHolder holder, int position) {
 
+        holder.txtNombre.setText(listaSocios.get(position).getNombre());
+        holder.txtNick.setText(listaSocios.get(position).getNick());
+        holder.txtCargo.setText(listaSocios.get(position).getCargo());
+        holder.ivFoto.setImageResource(listaSocios.get(position).getFoto());
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaSocios.size();
+    }
+
+    public void setOnCliCkListener(View.OnClickListener listener ){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener != null){
+
+            listener.onClick(view);
+
+        }
     }
 
     public class SociosViewHolder extends RecyclerView.ViewHolder{

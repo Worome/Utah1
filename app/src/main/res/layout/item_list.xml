@@ -34,6 +34,7 @@
                 android:id="@+id/txtNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:hint="Nombre"
                 android:textSize="8sp" />
@@ -42,6 +43,7 @@
                 android:id="@+id/txtNick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:hint="Nick"
                 android:textSize="8sp" />
@@ -50,6 +52,7 @@
                 android:id="@+id/txtCargo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:hint="Cargo"
                 android:textSize="8sp" />

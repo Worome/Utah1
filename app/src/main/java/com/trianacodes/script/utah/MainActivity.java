@@ -1,6 +1,7 @@
 package com.trianacodes.script.utah;
 
 import android.app.Fragment;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +9,7 @@ import android.util.Log;
 import com.trianacodes.script.utah.fragments.DetalleSociosFragment;
 import com.trianacodes.script.utah.fragments.ListaSocioFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListaSocioFragment.OnFragmentInteractionListener {
 
     ListaSocioFragment listaFragment;
     DetalleSociosFragment detalleFragment;
@@ -18,13 +19,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.i("MainActivity","Lista");
         listaFragment = new ListaSocioFragment();
-        Log.i("MainActivity","Detalle");
         detalleFragment = new DetalleSociosFragment();
-        Log.i("MainActivity","GetSupport");
         getSupportFragmentManager().beginTransaction().
                 replace(R.id.contenedorFragment,listaFragment).commit();
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }
